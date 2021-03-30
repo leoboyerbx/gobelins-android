@@ -1,6 +1,9 @@
 package com.pnk.gobelins.bddi
 
 import android.os.Bundle
+import android.view.animation.Animation
+import android.view.animation.Animation.AnimationListener
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
  * Activity enabling the user to roll a dice and see the result.
  */
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_2)
@@ -36,8 +40,22 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
-        diceImage.setImageResource(diceImageResource)
-        diceImage.contentDescription = diceRoll.toString()
+        val anim: Animation = AnimationUtils.loadAnimation(this, R.anim.shake)
+        anim.setAnimationListener(object : AnimationListener {
+            override fun onAnimationStart(animation: Animation?) {
+                // nothing to do here
+            }
+
+            override fun onAnimationEnd(animation: Animation?) {
+                diceImage.setImageResource(diceImageResource)
+                diceImage.contentDescription = diceRoll.toString()
+            }
+
+            override fun onAnimationRepeat(animation: Animation?) {
+                // nothing to do here
+            }
+        })
+        diceImage.startAnimation(anim)
     }
 
     private fun rollAllDices() {
@@ -47,4 +65,3 @@ class MainActivity : AppCompatActivity() {
         rollDice(diceImage2)
     }
 }
-
