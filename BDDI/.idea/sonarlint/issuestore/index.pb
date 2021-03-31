@@ -8,10 +8,6 @@ _
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-Y
-)app/src/main/res/layout/activity_main.xml,7\6\76b07e40f24cce093536731477540f12e7da3cb6
-[
-+app/src/main/res/layout/activity_main_2.xml,9\b\9bd6511cc39c54d77c82cf58c83b6813e03d3d65
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 R
@@ -36,8 +32,6 @@ h
 8app/src/main/res/drawable-v24/ic_launcher_foreground.xml,0\7\078508c831007ccb3938b355f0d30a8368f99a8d
 h
 8app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml,6\e\6ec7d34b130497a10dc92abcde9b313d370a89df
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 L
 .idea/dictionaries/leobo.xml,e\0\e0704ccfd231348c55f87226eb74563e6807c944
 F
@@ -48,8 +42,6 @@ R
 "app/src/main/res/values/themes.xml,e\b\eb7f0f821bde169dd21862705b2b042d2cea69a3
 X
 (app/src/main/res/values-night/themes.xml,8\c\8c3a6b96d9ffba496992e612d58227c19e6b9e65
-S
-#app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e
 O
 app/src/main/res/anim/shake.xml,7\a\7ac705d037b15eaa5f9b69e33f64d5bb284e1fc2
 @

@@ -4,21 +4,24 @@ import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.Animation.AnimationListener
 import android.view.animation.AnimationUtils
-import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.pnk.gobelins.bddi.databinding.ActivityMain2Binding
 
 /**
  * Activity enabling the user to roll a dice and see the result.
  */
 class MainActivity : AppCompatActivity() {
-
+    /**
+     * lateinit permet de garantir au compilateur qu'on va initialiser la variable dès que possible.
+     * Si on oublie de l'initialiser, l'app va planter.
+     */
+    lateinit var binding: ActivityMain2Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_2)
-
-        val button: Button = findViewById(R.id.my_button)
-        button.setOnClickListener { rollAllDices() }
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_2)
+        binding.myButton.setOnClickListener { rollAllDices() }
 
         rollAllDices()
     }
@@ -59,8 +62,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollAllDices() {
-        val diceImage1: ImageView = findViewById(R.id.imageView)
-        val diceImage2: ImageView = findViewById(R.id.imageView2)
+        val diceImage1: ImageView = binding.imageView
+        val diceImage2: ImageView = binding.imageView2
         rollDice(diceImage1)
         rollDice(diceImage2)
     }

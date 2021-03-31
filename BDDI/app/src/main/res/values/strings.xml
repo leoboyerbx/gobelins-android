@@ -2,4 +2,5 @@
     <string name="app_name">BDDI</string>
     <string name="dice_result">Résultat du dé</string>
     <string name="launch_dice">Lancer les dés</string>
+    <string name="my_text">My Text</string>
 </resources>
