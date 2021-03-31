@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Neighbors</string>
-    <string name="prompt_delete">Supprimer</string>
+    <string name="prompt_delete_message">Supprimer le voisin %1$s ?</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
+    <string name="prompt_delete_title">Supprimer ?</string>
 </resources>

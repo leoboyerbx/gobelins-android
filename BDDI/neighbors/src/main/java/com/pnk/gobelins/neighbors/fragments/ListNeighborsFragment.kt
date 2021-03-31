@@ -46,17 +46,19 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
     }
 
     override fun onDeleteNeibor(neighbor: Neighbor) {
-        prompt {
+        confirm(
+            getString(R.string.prompt_delete_title),
+            String.format(getString(R.string.prompt_delete_message), neighbor.name)
+        ) {
             NeighborRepository.getInstance().deleteNeighbor(neighbor)
             recyclerView.adapter?.notifyDataSetChanged()
         }
     }
 
-    private fun prompt(callback: (() -> Unit)?) {
+    private fun confirm(title: String, message: String, callback: (() -> Unit)?) {
         AlertDialog.Builder(context)
-            .setTitle("Delete entry")
-            .setMessage("Are you sure you want to delete this entry?") // Specifying a listener allows you to take an action before dismissing the dialog.
-            // The dialog is automatically dismissed when a dialog button is clicked.
+            .setTitle(title)
+            .setMessage(message)
             .setPositiveButton(
                 R.string.yes,
                 DialogInterface.OnClickListener { dialog, which ->
