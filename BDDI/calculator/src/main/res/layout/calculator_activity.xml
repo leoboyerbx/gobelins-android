@@ -33,6 +33,7 @@
         <EditText
             android:id="@+id/number1"
             android:layout_width="0dp"
+            android:inputType="number"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/compute_result"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -43,6 +44,7 @@
         <EditText
             android:id="@+id/number2"
             android:layout_width="0dp"
+            android:inputType="number"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/number1"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -59,6 +61,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_left"
             app:layout_constraintTop_toBottomOf="@+id/number2"
             android:layout_marginTop="15dp"
-            android:text="@string/compute_button"/>
+            android:text="@string/compute_button"
+            android:enabled="false"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
