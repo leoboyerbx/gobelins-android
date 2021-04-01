@@ -38,8 +38,17 @@ class ListNeighborsAdapter(
             .skipMemoryCache(false)
             .into(holder.mNeighbourAvatar)
 
+        if (neighbour.favorite) {
+            holder.mLikeButton.setImageResource(R.drawable.ic_baseline_favorite_24)
+        } else {
+            holder.mLikeButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+        }
+
         holder.mDeleteButton.setOnClickListener {
             listHandler.onDeleteNeibor(neighbour)
+        }
+        holder.mLikeButton.setOnClickListener {
+            listHandler.onLikeNeighbor(neighbour)
         }
     }
 
@@ -52,12 +61,14 @@ class ListNeighborsAdapter(
         val mNeighbourAvatar: ImageView
         val mNeighbourName: TextView
         val mDeleteButton: ImageButton
+        val mLikeButton: ImageButton
 
         init {
             // Enable click on item
             mNeighbourAvatar = view.findViewById(R.id.item_list_avatar)
             mNeighbourName = view.findViewById(R.id.item_list_name)
             mDeleteButton = view.findViewById(R.id.item_list_delete_button)
+            mLikeButton = view.findViewById(R.id.item_list_like_button)
         }
     }
 }

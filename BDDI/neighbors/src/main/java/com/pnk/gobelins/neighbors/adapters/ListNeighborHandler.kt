@@ -4,4 +4,5 @@ import com.pnk.gobelins.neighbors.models.Neighbor
 
 interface ListNeighborHandler {
     fun onDeleteNeibor(neighbor: Neighbor)
+    fun onLikeNeighbor(neighbor: Neighbor)
 }

@@ -26,6 +26,7 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // convertit vue XML en objet java, équialent du setcontentview pour les activités
         val view = inflater.inflate(R.layout.list_neighbors_fragment, container, false)
         recyclerView = view.findViewById(R.id.neighbors_list)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -41,7 +42,7 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val neighbors = NeighborRepository.getInstance().getNeighbours()
-        val adapter = ListNeighborsAdapter(neighbors, this)
+        val adapter = ListNeighborsAdapter(neighbors, listHandler = this)
         recyclerView.adapter = adapter
     }
 
@@ -53,6 +54,11 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
             NeighborRepository.getInstance().deleteNeighbor(neighbor)
             recyclerView.adapter?.notifyDataSetChanged()
         }
+    }
+
+    override fun onLikeNeighbor(neighbor: Neighbor) {
+        NeighborRepository.getInstance().updateFavoriteStatus(neighbor)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 
     private fun confirm(title: String, message: String, callback: (() -> Unit)?) {
