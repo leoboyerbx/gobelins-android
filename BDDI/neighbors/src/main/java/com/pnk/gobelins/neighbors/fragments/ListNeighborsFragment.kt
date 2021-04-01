@@ -2,6 +2,8 @@ package com.pnk.gobelins.neighbors.fragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -59,6 +61,12 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
     override fun onLikeNeighbor(neighbor: Neighbor) {
         NeighborRepository.getInstance().updateFavoriteStatus(neighbor)
         recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+    override fun onOpenPage(neighbor: Neighbor) {
+        val url = Uri.parse(if (neighbor.webSite.startsWith("http://")) neighbor.webSite else "http://${neighbor.webSite}")
+        val intent = Intent(Intent.ACTION_VIEW, url)
+        startActivity(intent)
     }
 
     private fun confirm(title: String, message: String, callback: (() -> Unit)?) {

@@ -80,8 +80,6 @@ G
 calculator/build.gradle,0\5\0536b649c058b1761742bad8d934e54c1acb85be
 D
 neighbors/.gitignore,3\d\3de7b6b0ea5745217b143a30be841079258e2a2e
-d
-4neighbors/src/main/res/layout/activity_neighbors.xml,c\7\c7086ea72fc0523814c6b2c3688eccc7904f8755
 V
 &neighbors/src/main/AndroidManifest.xml,a\f\afa644a7fc7f1ef1abdf61843879956b5dc76885
 F
@@ -132,3 +130,9 @@ X
 .neighbors/src/main/res/values-night/themes.xml,5\a\5a8513a4ce70cb3c165d2427d1e8a0d1c8cfc669
 …
 Uneighbors/src/main/java/com/pnk/gobelins/neighbors/fragments/ListNeighborsFragment.kt,a\f\af4fe0afe8658faad0d951b06c2d112fb75c6bf5
+k
+;neighbors/src/main/res/drawable/ic_baseline_favorite_24.xml,5\c\5cd1cdde4af5741a9a71a872ad34fc9dea1e17ec
+r
+Bneighbors/src/main/res/drawable/ic_baseline_favorite_border_24.xml,0\0\00db41118240388cd6a649dc270fed9f37f3dd70
+y
+Ineighbors/src/main/java/com/pnk/gobelins/neighbors/AddNeighborActivity.kt,5\7\577e1cc5ddadbeef77911ca2cfbba4cef66651fb

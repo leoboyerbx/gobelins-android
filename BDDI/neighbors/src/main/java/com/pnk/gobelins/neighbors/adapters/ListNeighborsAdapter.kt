@@ -1,14 +1,20 @@
 package com.pnk.gobelins.neighbors.adapters
 
+import android.animation.Animator
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.internal.ContextUtils
 import com.pnk.gobelins.neighbors.R
 import com.pnk.gobelins.neighbors.models.Neighbor
 
@@ -25,10 +31,12 @@ class ListNeighborsAdapter(
         return ViewHolder(view)
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val neighbour: Neighbor = mNeighbours[position]
         // Display Neighbour Name
         holder.mNeighbourName.text = neighbour.name
+        holder.mNeighbourDescription.text = neighbour.aboutMe
         val context = holder.mNeighbourAvatar.context
         Glide.with(context)
             .load(neighbour.avatarUrl)
@@ -47,6 +55,12 @@ class ListNeighborsAdapter(
         holder.mDeleteButton.setOnClickListener {
             listHandler.onDeleteNeibor(neighbour)
         }
+        holder.mDeleteButton.setOnClickListener {
+            listHandler.onDeleteNeibor(neighbour)
+        }
+        holder.mPageButton.setOnClickListener {
+            listHandler.onOpenPage(neighbour)
+        }
         holder.mLikeButton.setOnClickListener {
             listHandler.onLikeNeighbor(neighbour)
         }
@@ -60,15 +74,19 @@ class ListNeighborsAdapter(
         RecyclerView.ViewHolder(view) {
         val mNeighbourAvatar: ImageView
         val mNeighbourName: TextView
+        val mNeighbourDescription: TextView
         val mDeleteButton: ImageButton
         val mLikeButton: ImageButton
+        val mPageButton: ImageButton
 
         init {
             // Enable click on item
             mNeighbourAvatar = view.findViewById(R.id.item_list_avatar)
             mNeighbourName = view.findViewById(R.id.item_list_name)
+            mNeighbourDescription = view.findViewById(R.id.item_list_description)
             mDeleteButton = view.findViewById(R.id.item_list_delete_button)
             mLikeButton = view.findViewById(R.id.item_list_like_button)
+            mPageButton = view.findViewById(R.id.item_list_page_button)
         }
     }
 }
