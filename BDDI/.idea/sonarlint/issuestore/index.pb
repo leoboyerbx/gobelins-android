@@ -84,8 +84,6 @@ V
 &neighbors/src/main/AndroidManifest.xml,a\f\afa644a7fc7f1ef1abdf61843879956b5dc76885
 F
 neighbors/build.gradle,f\b\fb77da1d1a1d93b82ffbaabe92454b65dbea94b6
-f
-6calculator/src/main/res/layout/calculator_activity.xml,5\d\5db3c7eb45f5ee9c5dacde9e2e5a0a4f4d8be65a
 z
 Jcalculator/src/main/java/com/pnk/gobelins/calculator/CalculatorActivity.kt,3\e\3ed61bbb0a3bc7a31569ab693c022ddd919b43b7
 X

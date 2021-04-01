@@ -12,22 +12,6 @@ class NeighborsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_neighbors)
         changeFragment(ListNeighborsFragment())
-
-        findViewById<Button>(R.id.add_neighbor).setOnClickListener {
-            // lancer une activité
-            val intent = Intent(baseContext, AddNeighborActivity::class.java)
-            startActivity(intent)
-
-            // lancer une url
-//            val url = Uri.parse("https://google.fr")
-//            val intent = Intent(Intent.ACTION_VIEW, url)
-//            startActivity(intent)
-
-            // appeler un num
-//            val url = Uri.parse("tel:0782078732")
-//            val intent = Intent(Intent.ACTION_VIEW, url)
-//            startActivity(intent)
-        }
     }
 
     private fun changeFragment(fragment: Fragment) {

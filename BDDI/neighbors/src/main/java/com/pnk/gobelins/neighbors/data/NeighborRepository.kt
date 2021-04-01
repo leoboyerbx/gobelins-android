@@ -12,6 +12,8 @@ class NeighborRepository {
 
     fun getNeighbours(): List<Neighbor> = apiService.neighbours
 
+    fun createNeighbor(neighbor: Neighbor) = apiService.createNeighbour(neighbor)
+
     fun deleteNeighbor(neighbor: Neighbor) = apiService.deleteNeighbour(neighbor)
 
     fun updateFavoriteStatus(neighbor: Neighbor) = apiService.updateFavoriteStatus(neighbor)
