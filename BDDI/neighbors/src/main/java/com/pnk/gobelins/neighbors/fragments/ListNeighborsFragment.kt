@@ -8,10 +8,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
+import com.pnk.gobelins.neighbors.NavigationListener
 import com.pnk.gobelins.neighbors.R
 import com.pnk.gobelins.neighbors.adapters.ListNeighborHandler
 import com.pnk.gobelins.neighbors.adapters.ListNeighborsAdapter
@@ -32,20 +35,18 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
         val view = inflater.inflate(R.layout.list_neighbors_fragment, container, false)
         recyclerView = view.findViewById(R.id.neighbors_list)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                requireContext(),
-                DividerItemDecoration.VERTICAL
-            )
-        )
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val neighbors = NeighborRepository.getInstance().getNeighbours()
-        val adapter = ListNeighborsAdapter(neighbors, listHandler = this)
-        recyclerView.adapter = adapter
+        refresh()
+        val addNeighbor: Button = view.findViewById(R.id.add_neighbor)
+        addNeighbor.setOnClickListener {
+            (activity as? NavigationListener)?.let {
+                it.showFragment(AddNeighbourFragment())
+            }
+        }
     }
 
     override fun onDeleteNeibor(neighbor: Neighbor) {
@@ -54,13 +55,11 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
             String.format(getString(R.string.prompt_delete_message), neighbor.name)
         ) {
             NeighborRepository.getInstance().deleteNeighbor(neighbor)
-            recyclerView.adapter?.notifyDataSetChanged()
         }
     }
 
     override fun onLikeNeighbor(neighbor: Neighbor) {
         NeighborRepository.getInstance().updateFavoriteStatus(neighbor)
-        recyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun onOpenPage(neighbor: Neighbor) {
@@ -82,5 +81,16 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
             .setNegativeButton(R.string.no, null)
             .setIcon(android.R.drawable.ic_dialog_alert)
             .show()
+    }
+
+    private fun refresh() {
+        NeighborRepository.getInstance().getNeighbours().observe(viewLifecycleOwner) {
+            if (recyclerView.adapter == null) {
+                val adapter = ListNeighborsAdapter(it, this)
+                recyclerView.adapter = adapter
+            } else {
+                (recyclerView.adapter as? ListNeighborsAdapter)?.updateData(it)
+            }
+        }
     }
 }

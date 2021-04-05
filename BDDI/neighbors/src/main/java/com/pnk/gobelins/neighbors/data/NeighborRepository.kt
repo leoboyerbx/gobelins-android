@@ -1,5 +1,6 @@
 package com.pnk.gobelins.neighbors.data
 
+import androidx.lifecycle.LiveData
 import com.pnk.gobelins.neighbors.data.service.DummyNeighborApiService
 import com.pnk.gobelins.neighbors.data.service.NeighborApiService
 import com.pnk.gobelins.neighbors.models.Neighbor
@@ -10,7 +11,7 @@ class NeighborRepository {
         apiService = DummyNeighborApiService()
     }
 
-    fun getNeighbours(): List<Neighbor> = apiService.neighbours
+    fun getNeighbours(): LiveData<List<Neighbor>> = apiService.neighbours
 
     fun createNeighbor(neighbor: Neighbor) = apiService.createNeighbour(neighbor)
 

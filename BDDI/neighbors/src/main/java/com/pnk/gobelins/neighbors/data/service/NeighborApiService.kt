@@ -1,5 +1,6 @@
 package com.pnk.gobelins.neighbors.data.service
 
+import androidx.lifecycle.LiveData
 import com.pnk.gobelins.neighbors.models.Neighbor
 
 interface NeighborApiService {
@@ -7,7 +8,7 @@ interface NeighborApiService {
      * Get all my Neighbors
      * @return [List]
      */
-    val neighbours: List<Neighbor>
+    val neighbours: LiveData<List<Neighbor>>
 
     /**
      * Deletes a neighbor
