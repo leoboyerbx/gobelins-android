@@ -120,10 +120,6 @@ w
 Gneighbors/src/main/java/com/pnk/gobelins/neighbors/NeighborsActivity.kt,d\5\d517dfe09a3768134e9e8c629a9e1e5064d06753
 L
 neighbors/proguard-rules.pro,9\4\94d21fa4fca74885f138793b75317873bc04bf3e
-X
-(neighbors/src/main/res/values/themes.xml,c\2\c28903662764c951e7fd20eed3b8e6ed0d36fb16
-^
-.neighbors/src/main/res/values-night/themes.xml,5\a\5a8513a4ce70cb3c165d2427d1e8a0d1c8cfc669
 …
 Uneighbors/src/main/java/com/pnk/gobelins/neighbors/fragments/ListNeighborsFragment.kt,a\f\af4fe0afe8658faad0d951b06c2d112fb75c6bf5
 k

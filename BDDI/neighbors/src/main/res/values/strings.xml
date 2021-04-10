@@ -1,12 +1,9 @@
 <resources>
-    <string name="app_name">Neighbors</string>
+    <string name="app_name">Voisins</string>
     <string name="prompt_delete_message">Supprimer le voisin %1$s ?</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="prompt_delete_title">Supprimer ?</string>
-    <string name="add_neighbor_action">Click me !</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_image">Image</string>
     <string name="hint_name">Nom</string>
     <string name="hint_tel">Téléphone</string>
