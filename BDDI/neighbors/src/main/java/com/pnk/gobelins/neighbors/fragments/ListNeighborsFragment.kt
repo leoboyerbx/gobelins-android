@@ -8,12 +8,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.pnk.gobelins.neighbors.NavigationListener
 import com.pnk.gobelins.neighbors.R
 import com.pnk.gobelins.neighbors.adapters.ListNeighborHandler
@@ -35,17 +33,19 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
         val view = inflater.inflate(R.layout.list_neighbors_fragment, container, false)
         recyclerView = view.findViewById(R.id.neighbors_list)
         recyclerView.layoutManager = LinearLayoutManager(context)
+
+        // update title
+        (activity as? NavigationListener)?.updateTitle(R.string.listNeighborsTitle)
+
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         refresh()
-        val addNeighbor: Button = view.findViewById(R.id.add_neighbor)
+        val addNeighbor: FloatingActionButton = view.findViewById(R.id.add_neighbor)
         addNeighbor.setOnClickListener {
-            (activity as? NavigationListener)?.let {
-                it.showFragment(AddNeighbourFragment())
-            }
+            (activity as? NavigationListener)?.showFragment(AddNeighbourFragment())
         }
     }
 

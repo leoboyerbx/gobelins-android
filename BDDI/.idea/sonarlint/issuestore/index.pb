@@ -132,10 +132,6 @@ r
 Bneighbors/src/main/res/drawable/ic_baseline_favorite_border_24.xml,0\0\00db41118240388cd6a649dc270fed9f37f3dd70
 k
 ;neighbors/src/main/res/drawable/ic_baseline_computer_24.xml,f\4\f430e020673462a1e8923470951316dd96606746
-Y
-)neighbors/src/main/res/values/strings.xml,2\c\2c76568992d88083920250058f156a1d4c456f6c
-d
-4neighbors/src/main/res/layout/activity_neighbors.xml,c\7\c7086ea72fc0523814c6b2c3688eccc7904f8755
 „
 Tneighbors/src/main/java/com/pnk/gobelins/neighbors/fragments/AddNeighbourFragment.kt,a\4\a4fe1ea4296230a24a55bd7403d9c0d8c174bf42
 …
@@ -144,3 +140,5 @@ w
 Gneighbors/src/main/java/com/pnk/gobelins/neighbors/data/service/Data.kt,9\f\9f76345932a1d15c64fec675c0c3de609e069065
 x
 Hneighbors/src/main/java/com/pnk/gobelins/neighbors/NavigationLIstener.kt,4\e\4e6fa5ba28d3338208fcb8f810baed1736f85725
+m
+=neighbors/src/main/res/drawable/ic_baseline_person_add_24.xml,3\e\3e4b01c2d1692cdfc5f86143304c9e5e3fcd4bfe
