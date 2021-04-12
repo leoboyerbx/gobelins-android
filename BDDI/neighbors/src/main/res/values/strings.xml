@@ -15,4 +15,5 @@
     <string name="urlError">Cet URL est invalide.</string>
     <string name="listNeighborsTitle">Mes voisins</string>
     <string name="titleAddNeighbor">Ajouter un voisin</string>
+    <string name="persistent_storage_menu_option">Stockage persistant</string>
 </resources>

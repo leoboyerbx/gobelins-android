@@ -18,6 +18,7 @@ import com.pnk.gobelins.neighbors.databinding.FragmentAddNeighbourBinding
 import com.pnk.gobelins.neighbors.di.DI
 import com.pnk.gobelins.neighbors.models.Neighbor
 import com.pnk.gobelins.neighbors.repositories.NeighborRepository
+import com.pnk.gobelins.neighbors.ui.NeighborsActivity
 
 class AddNeighbourFragment : Fragment() {
     private lateinit var formView: View
@@ -150,6 +151,6 @@ class AddNeighbourFragment : Fragment() {
 
             DI.repository.createNeighbor(newNeighbor)
         }
-        (activity as? NavigationListener)?.showFragment(ListNeighborsFragment())
+        (activity as? NavigationListener)?.showFragment((activity as NeighborsActivity).neighborsFragment)
     }
 }

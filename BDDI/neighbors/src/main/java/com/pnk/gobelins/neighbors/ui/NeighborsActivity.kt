@@ -1,6 +1,9 @@
 package com.pnk.gobelins.neighbors.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -11,6 +14,8 @@ import com.pnk.gobelins.neighbors.ui.fragments.ListNeighborsFragment
 
 class NeighborsActivity : AppCompatActivity(), NavigationListener {
     private lateinit var toolbar: Toolbar
+    lateinit var neighborsFragment: ListNeighborsFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,7 +25,8 @@ class NeighborsActivity : AppCompatActivity(), NavigationListener {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        showFragment(ListNeighborsFragment())
+        neighborsFragment = ListNeighborsFragment()
+        showFragment(neighborsFragment)
     }
 
     override fun showFragment(fragment: Fragment) {
@@ -32,5 +38,20 @@ class NeighborsActivity : AppCompatActivity(), NavigationListener {
 
     override fun updateTitle(title: Int) {
         toolbar.setTitle(title)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.persistency_button) {
+            item.isChecked = !item.isChecked
+            DI.repository.setPersistency(shouldBePersistent = item.isChecked)
+            neighborsFragment.refresh()
+        }
+        return true
     }
 }

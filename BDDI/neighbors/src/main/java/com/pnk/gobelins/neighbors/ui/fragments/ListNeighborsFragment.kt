@@ -1,7 +1,6 @@
 package com.pnk.gobelins.neighbors.ui.fragments
 
 import android.app.AlertDialog
-import android.app.Application
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
@@ -10,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -19,10 +19,17 @@ import com.pnk.gobelins.neighbors.adapters.ListNeighborHandler
 import com.pnk.gobelins.neighbors.adapters.ListNeighborsAdapter
 import com.pnk.gobelins.neighbors.di.DI
 import com.pnk.gobelins.neighbors.models.Neighbor
-import com.pnk.gobelins.neighbors.repositories.NeighborRepository
+import com.pnk.gobelins.neighbors.viewmodels.NeighborViewModel
 
 class ListNeighborsFragment : Fragment(), ListNeighborHandler {
+    private lateinit var viewModel: NeighborViewModel
     private lateinit var recyclerView: RecyclerView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(NeighborViewModel::class.java)
+    }
+
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
      */
@@ -85,14 +92,18 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
             .show()
     }
 
-    private fun refresh() {
-        DI.repository.getNeighbours().observe(viewLifecycleOwner) {
-            if (recyclerView.adapter == null) {
-                val adapter = ListNeighborsAdapter(it, this)
-                recyclerView.adapter = adapter
-            } else {
-                (recyclerView.adapter as? ListNeighborsAdapter)?.updateData(it)
-            }
+    fun refresh() {
+//        DI.repository.getNeighbours().observe(viewLifecycleOwner) {
+//            if (recyclerView.adapter == null) {
+//                val adapter = ListNeighborsAdapter(it, this)
+//                recyclerView.adapter = adapter
+//            } else {
+//                (recyclerView.adapter as? ListNeighborsAdapter)?.updateData(it)
+//            }
+//        }
+        viewModel.neighbors.observe(viewLifecycleOwner) {
+            val adapter = ListNeighborsAdapter(it, this)
+            recyclerView.adapter = adapter
         }
     }
 }

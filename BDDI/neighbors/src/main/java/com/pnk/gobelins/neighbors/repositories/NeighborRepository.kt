@@ -3,13 +3,27 @@ package com.pnk.gobelins.neighbors.repositories
 import android.app.Application
 import androidx.lifecycle.LiveData
 import com.pnk.gobelins.neighbors.dal.NeighborApiService
+import com.pnk.gobelins.neighbors.dal.memory.DummyNeighborApiService
 import com.pnk.gobelins.neighbors.dal.room.RoomNeighborDataSource
 import com.pnk.gobelins.neighbors.models.Neighbor
 
 class NeighborRepository private constructor(application: Application) {
-    private val apiService: NeighborApiService
+    private var apiService: NeighborApiService
+    private val memoryApiService: NeighborApiService
+    private val persistentApiService: NeighborApiService
     init {
-        apiService = RoomNeighborDataSource(application)
+        memoryApiService = DummyNeighborApiService()
+        persistentApiService = RoomNeighborDataSource(application)
+
+        apiService = memoryApiService
+    }
+
+    fun setPersistency(shouldBePersistent: Boolean) {
+        apiService = if (shouldBePersistent) {
+            persistentApiService
+        } else {
+            memoryApiService
+        }
     }
 
     fun getNeighbours(): LiveData<List<Neighbor>> = apiService.neighbours

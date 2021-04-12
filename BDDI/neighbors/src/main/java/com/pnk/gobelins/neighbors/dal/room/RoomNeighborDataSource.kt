@@ -8,6 +8,7 @@ import com.pnk.gobelins.neighbors.dal.room.dao.NeighborDao
 import com.pnk.gobelins.neighbors.dal.utilis.toEntity
 import com.pnk.gobelins.neighbors.dal.utilis.toNeighbor
 import com.pnk.gobelins.neighbors.models.Neighbor
+import java.util.concurrent.Executors
 
 class RoomNeighborDataSource(application: Application) : NeighborApiService {
     private val database: NeighborDataBase = NeighborDataBase.getDataBase(application)
@@ -27,18 +28,31 @@ class RoomNeighborDataSource(application: Application) : NeighborApiService {
         get() = _neighbors
 
     override fun deleteNeighbour(neighbor: Neighbor) {
-        TODO("Not yet implemented")
+        performAsync {
+            dao.delete(neighbor.toEntity())
+        }
     }
 
     override fun createNeighbour(neighbor: Neighbor) {
-        dao.add(neighbor.toEntity())
+        performAsync {
+            dao.add(neighbor.toEntity())
+        }
     }
 
     override fun updateFavoriteStatus(neighbor: Neighbor) {
-        TODO("Not yet implemented")
+        neighbor.favorite = !neighbor.favorite
+        performAsync {
+            dao.update(neighbor.toEntity())
+        }
     }
 
     override fun updateDataNeighbour(neighbor: Neighbor) {
         TODO("Not yet implemented")
+    }
+
+    private fun performAsync(action: (() -> Unit)) {
+        Executors.newSingleThreadExecutor().execute {
+            action.invoke()
+        }
     }
 }
