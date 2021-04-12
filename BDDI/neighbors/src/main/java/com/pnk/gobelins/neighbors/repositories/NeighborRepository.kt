@@ -1,14 +1,16 @@
-package com.pnk.gobelins.neighbors.data
+package com.pnk.gobelins.neighbors.repositories
 
+import android.app.Application
 import androidx.lifecycle.LiveData
-import com.pnk.gobelins.neighbors.data.service.DummyNeighborApiService
-import com.pnk.gobelins.neighbors.data.service.NeighborApiService
+import com.pnk.gobelins.neighbors.dal.NeighborApiService
+import com.pnk.gobelins.neighbors.dal.memory.DummyNeighborApiService
+import com.pnk.gobelins.neighbors.dal.room.RoomNeighborDataSource
 import com.pnk.gobelins.neighbors.models.Neighbor
 
-class NeighborRepository {
+class NeighborRepository private constructor(application: Application) {
     private val apiService: NeighborApiService
     init {
-        apiService = DummyNeighborApiService()
+        apiService = RoomNeighborDataSource(application)
     }
 
     fun getNeighbours(): LiveData<List<Neighbor>> = apiService.neighbours
@@ -21,9 +23,9 @@ class NeighborRepository {
 
     companion object {
         private var instance: NeighborRepository? = null
-        fun getInstance(): NeighborRepository {
+        fun getInstance(application: Application): NeighborRepository {
             if (instance == null) {
-                instance = NeighborRepository()
+                instance = NeighborRepository(application)
             }
             return instance!!
         }

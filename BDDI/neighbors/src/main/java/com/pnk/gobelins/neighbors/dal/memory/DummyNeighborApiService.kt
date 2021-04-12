@@ -1,7 +1,8 @@
-package com.pnk.gobelins.neighbors.data.service
+package com.pnk.gobelins.neighbors.dal.memory
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.pnk.gobelins.neighbors.dal.NeighborApiService
 import com.pnk.gobelins.neighbors.models.Neighbor
 
 class DummyNeighborApiService : NeighborApiService {

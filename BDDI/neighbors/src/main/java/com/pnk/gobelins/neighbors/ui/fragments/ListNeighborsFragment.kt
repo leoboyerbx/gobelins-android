@@ -1,6 +1,7 @@
-package com.pnk.gobelins.neighbors.fragments
+package com.pnk.gobelins.neighbors.ui.fragments
 
 import android.app.AlertDialog
+import android.app.Application
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
@@ -16,8 +17,9 @@ import com.pnk.gobelins.neighbors.NavigationListener
 import com.pnk.gobelins.neighbors.R
 import com.pnk.gobelins.neighbors.adapters.ListNeighborHandler
 import com.pnk.gobelins.neighbors.adapters.ListNeighborsAdapter
-import com.pnk.gobelins.neighbors.data.NeighborRepository
+import com.pnk.gobelins.neighbors.di.DI
 import com.pnk.gobelins.neighbors.models.Neighbor
+import com.pnk.gobelins.neighbors.repositories.NeighborRepository
 
 class ListNeighborsFragment : Fragment(), ListNeighborHandler {
     private lateinit var recyclerView: RecyclerView
@@ -54,12 +56,12 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
             getString(R.string.prompt_delete_title),
             String.format(getString(R.string.prompt_delete_message), neighbor.name)
         ) {
-            NeighborRepository.getInstance().deleteNeighbor(neighbor)
+            DI.repository.deleteNeighbor(neighbor)
         }
     }
 
     override fun onLikeNeighbor(neighbor: Neighbor) {
-        NeighborRepository.getInstance().updateFavoriteStatus(neighbor)
+        DI.repository.updateFavoriteStatus(neighbor)
     }
 
     override fun onOpenPage(neighbor: Neighbor) {
@@ -84,7 +86,7 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
     }
 
     private fun refresh() {
-        NeighborRepository.getInstance().getNeighbours().observe(viewLifecycleOwner) {
+        DI.repository.getNeighbours().observe(viewLifecycleOwner) {
             if (recyclerView.adapter == null) {
                 val adapter = ListNeighborsAdapter(it, this)
                 recyclerView.adapter = adapter

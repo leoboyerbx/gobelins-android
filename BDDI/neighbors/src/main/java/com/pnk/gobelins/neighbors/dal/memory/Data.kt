@@ -1,4 +1,4 @@
-package com.pnk.gobelins.neighbors.data.service
+package com.pnk.gobelins.neighbors.dal.memory
 
 import com.pnk.gobelins.neighbors.models.Neighbor
 

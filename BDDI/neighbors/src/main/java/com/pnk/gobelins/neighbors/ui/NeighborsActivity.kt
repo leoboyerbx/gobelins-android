@@ -1,15 +1,20 @@
-package com.pnk.gobelins.neighbors
+package com.pnk.gobelins.neighbors.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.pnk.gobelins.neighbors.fragments.ListNeighborsFragment
+import com.pnk.gobelins.neighbors.NavigationListener
+import com.pnk.gobelins.neighbors.R
+import com.pnk.gobelins.neighbors.di.DI
+import com.pnk.gobelins.neighbors.ui.fragments.ListNeighborsFragment
 
 class NeighborsActivity : AppCompatActivity(), NavigationListener {
     private lateinit var toolbar: Toolbar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        DI.inject(application)
 
         setContentView(R.layout.activity_neighbors)
         toolbar = findViewById(R.id.toolbar)

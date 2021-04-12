@@ -1,5 +1,6 @@
-package com.pnk.gobelins.neighbors.fragments
+package com.pnk.gobelins.neighbors.ui.fragments
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +14,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.textfield.TextInputEditText
 import com.pnk.gobelins.neighbors.NavigationListener
 import com.pnk.gobelins.neighbors.R
-import com.pnk.gobelins.neighbors.data.NeighborRepository
 import com.pnk.gobelins.neighbors.databinding.FragmentAddNeighbourBinding
+import com.pnk.gobelins.neighbors.di.DI
 import com.pnk.gobelins.neighbors.models.Neighbor
+import com.pnk.gobelins.neighbors.repositories.NeighborRepository
 
 class AddNeighbourFragment : Fragment() {
     private lateinit var formView: View
@@ -132,7 +134,7 @@ class AddNeighbourFragment : Fragment() {
     }
 
     private fun save() {
-        val lastNeighborId = NeighborRepository.getInstance().getNeighbours().value?.last()?.id ?: 0
+        val lastNeighborId = DI.repository.getNeighbours().value?.last()?.id ?: 0
         val id = lastNeighborId + 1
         with(binding) {
             val newNeighbor = Neighbor(
@@ -145,7 +147,8 @@ class AddNeighbourFragment : Fragment() {
                 favorite = false,
                 webSite = inputWebsite.text.toString()
             )
-            NeighborRepository.getInstance().createNeighbor(newNeighbor)
+
+            DI.repository.createNeighbor(newNeighbor)
         }
         (activity as? NavigationListener)?.showFragment(ListNeighborsFragment())
     }

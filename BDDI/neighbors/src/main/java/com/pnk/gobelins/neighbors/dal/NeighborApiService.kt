@@ -1,4 +1,4 @@
-package com.pnk.gobelins.neighbors.data.service
+package com.pnk.gobelins.neighbors.dal
 
 import androidx.lifecycle.LiveData
 import com.pnk.gobelins.neighbors.models.Neighbor
