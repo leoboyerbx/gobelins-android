@@ -3,7 +3,6 @@ package com.pnk.gobelins.neighbors.repositories
 import android.app.Application
 import androidx.lifecycle.LiveData
 import com.pnk.gobelins.neighbors.dal.NeighborApiService
-import com.pnk.gobelins.neighbors.dal.memory.DummyNeighborApiService
 import com.pnk.gobelins.neighbors.dal.room.RoomNeighborDataSource
 import com.pnk.gobelins.neighbors.models.Neighbor
 
