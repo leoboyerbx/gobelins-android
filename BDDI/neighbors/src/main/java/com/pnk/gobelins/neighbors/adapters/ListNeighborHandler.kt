@@ -6,4 +6,5 @@ interface ListNeighborHandler {
     fun onDeleteNeibor(neighbor: Neighbor)
     fun onLikeNeighbor(neighbor: Neighbor)
     fun onOpenPage(neighbor: Neighbor)
+    fun onOpenSingle(neighbor: Neighbor)
 }

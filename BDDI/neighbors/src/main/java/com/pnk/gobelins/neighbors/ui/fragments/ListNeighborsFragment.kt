@@ -45,7 +45,6 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
 
         // update title
         (activity as? NavigationListener)?.updateTitle(R.string.listNeighborsTitle)
-
         return view
     }
 
@@ -75,6 +74,10 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
         val url = Uri.parse(if (neighbor.webSite.startsWith("http://")) neighbor.webSite else "http://${neighbor.webSite}")
         val intent = Intent(Intent.ACTION_VIEW, url)
         startActivity(intent)
+    }
+
+    override fun onOpenSingle(neighbor: Neighbor) {
+        (activity as? NavigationListener)?.showFragment(SingleNeighbourFragment(neighbor))
     }
 
     private fun confirm(title: String, message: String, callback: (() -> Unit)?) {

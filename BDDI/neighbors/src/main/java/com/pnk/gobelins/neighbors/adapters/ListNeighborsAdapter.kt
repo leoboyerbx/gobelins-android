@@ -45,6 +45,9 @@ class ListNeighborsAdapter(
         holder.binding.itemListLikeButton.setOnClickListener {
             listHandler.onLikeNeighbor(neighbour)
         }
+        holder.binding.itemListCard.setOnClickListener {
+            listHandler.onOpenSingle(neighbour)
+        }
     }
 
     override fun getItemCount(): Int {

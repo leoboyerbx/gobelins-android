@@ -3,6 +3,8 @@ package com.pnk.gobelins.neighbors.adapters
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.BindingMethod
+import androidx.databinding.BindingMethods
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.pnk.gobelins.neighbors.R

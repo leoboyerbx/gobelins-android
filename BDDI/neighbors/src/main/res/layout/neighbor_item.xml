@@ -6,6 +6,7 @@
             type="com.pnk.gobelins.neighbors.models.Neighbor" />
     </data>
     <androidx.cardview.widget.CardView
+        android:id="@+id/item_list_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
